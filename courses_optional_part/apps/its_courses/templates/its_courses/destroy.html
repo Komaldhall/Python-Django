@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <title>Remove Course</title>
+    <style>
+        .main{
+
+            padding:40px;
+            font-family: sans-serif;
+        }
+       
+        .head{
+            font-family: sans-serif;
+            color:rgb(34, 118, 139);
+            
+            padding:20px;
+
+        }
+        .color{
+            background-color: red;
+        }
+        /* .none{
+            text-decoration: none;
+        } */
+    
+    </style>
+</head>
+<body class="yellow lighten-5">
+
+
+    <h3 class="center-align head">Are you sure you want to delete the following course?</h3>
+    <div class="main">
+        <p>Name : {{course.name}}</p>
+        <p>Description : {{desc.desc}}</p>
+        <a href="/" class="btn z-depth-5">No</a>
+        <a href='/delete/{{course.id}}' class="btn color z-depth-5">Yes! I want to delete this</a>
+    </div>
+    
+   
+
+
+</body>
+</html>

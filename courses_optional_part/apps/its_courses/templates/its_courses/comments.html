@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <title>Comments</title>
+    <style>
+        .main{
+
+            padding:40px;
+            font-family: sans-serif;
+        }
+       
+        .head{
+            font-family: sans-serif;
+            color:rgb(34, 118, 139);
+            
+            padding:20px;
+
+        }
+        .color{
+            background-color: red;
+        }
+        .comment{
+
+            margin-left:50px;
+            margin-right:50px;
+        }
+        .middle{
+            margin-left: 400px;
+        }
+    
+    </style>
+</head>
+<body class="yellow lighten-5">
+    
+    <form action="{{course_id}}" method='POST'>
+        {% csrf_token %}
+        <h3 class="center-align head">Want to leave any comments?</h3>
+        <p class="comment"><input type="text" name="comment"></p>
+        <button class="middle btn z-depth-5">Submit</button> <a href="/" class="middle btn z-depth-5">Go Back</a>
+    </form>
+    {%for i in comments%}
+    <p class="comment">{{i.comment}}</p>
+    {%endfor%}
+    
+
+
+</body>
+</html>

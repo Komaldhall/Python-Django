@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <title>Courses</title>
+    <style>
+        .main{
+
+            padding:30px;
+        }
+        .error{
+            color:red;
+            font-style: italic;
+        }
+        .head{
+            font-family: sans-serif;
+            color:rgb(34, 118, 139);
+           
+            padding:20px;
+
+        }
+        .underline{
+            text-decoration: underline;
+        }
+    
+    
+    </style>
+</head>
+<body class="yellow lighten-5 main">
+    
+    <form action='add' method='POST'>
+        <h3 class="center-align head">Add a new Course</h3>
+        {% csrf_token %}
+        <div class="error">
+            {% if messages %}
+            
+                {% for message in messages %}
+                *{{ message }} <br>  
+                {% endfor %}
+        
+            {% endif %}
+        </div>
+        <p>Name:<input type="text" name="name"></p>
+        <p>Description:<input type="text" name="desc"></p>
+        <button class="btn waves-effect waves-light btn z-depth-5">Add</button>
+
+    </form>
+        <h4 class="head center-align">Courses</h4>
+        {% csrf_token %}
+        <table class="striped">
+            <tr>
+                <th>Course Name</th>
+                <th>Description</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+            </tr>
+        {%for c in course%}    
+            <tr>
+                <td>{{c.name}}</td>
+                <td>{{c.desc}}</td>
+                <td>{{c.created_at}}</td>
+                <td><a href="/destroy/{{c.id}}" class="underline">Remove</a></td>
+            </tr>
+        {%endfor%}    
+        </table>
+        
+
+   
+
+
+</body>
+</html>

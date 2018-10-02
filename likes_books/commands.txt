@@ -1,0 +1,73 @@
+Book.objects.first().uploader - this should return the user who uploaded the book
+User.objects.first().uploaded_books - this should return all the books that are uploaded by the first user
+Book.objects.first().liked_users - this should return all the users who liked the first book
+User.objects.first().liked_books - this should return all the books that were liked by the first user
+
+
+#Create 3 different user accounts
+Users.objects.create(first_name="Jay", last_name="aaa", email="aaa")
+Users.objects.create(first_name="Jaydsfg", last_name="aasdfa", email="aaa")
+Users.objects.create(first_name="Jdfsdaydsfg", last_name="aasdfa", email="aaa")
+
+#Have the first user create/upload 2 books.
+u=Users.objects.get(id=1)
+Books.objects.create(name="fdgdsfgf", desc="sdaaf", uploader=u)
+Books.objects.create(name="fdgdscxvfgf", desc="sscvbndaaf", uploader=u)
+
+#Have the second user create/upload 2 other books.
+u=Users.objects.get(id=2)
+Books.objects.create(name="asdsfa", desc="sdaaf", uploader=u)
+Books.objects.create(name="sds", desc="sscvbndaaf", uploader=u)
+
+
+#Have the third user create/upload 2 other books.
+u=Users.objects.get(id=3)
+Books.objects.create(name="asdsfa", desc="sdaaf", uploader=u)
+Books.objects.create(name="sds", desc="sscvbndaaf", uploader=u)
+
+#Have the first user like the last book and the first book
+this_user=Users.objects.first()
+this_book=Books.objects.first()
+this_user.liked_books.add(this_book)
+this_book=Books.objects.last()
+this_user.liked_books.add(this_book)
+
+#Have the second user like the first book and the third book
+this_user=Users.objects.get(id=2)
+this_book=Books.objects.first()
+this_user.liked_books.add(this_book)
+this_book=Books.objects.get(id=3)
+this_user.liked_books.add(this_book)
+
+#Have the third user like all books
+this_user=Users.objects.get(id=3)
+this_book=Books.objects.first()
+this_user.liked_books.add(this_book)
+this_book=Books.objects.get(id=2)
+this_user.liked_books.add(this_book)
+this_book=Books.objects.get(id=3)
+this_user.liked_books.add(this_book)
+this_book=Books.objects.get(id=4)
+this_user.liked_books.add(this_book)
+this_book=Books.objects.get(id=5)
+this_user.liked_books.add(this_book)
+this_book=Books.objects.last()
+this_user.liked_books.add(this_book)
+
+#Display all users who like the first book
+Books.objects.first().liked_users.values()
+or
+Books.objects.first().liked_users.values('first_name')
+
+#Display the user who uploaded the first book
+b=Books.objects.first()
+Users.objects.get(uploaded_books=b)
+
+#Display all users who like the second book
+Books.objects.get(id=2).liked_users.values()
+or  
+Books.objects.get(id=2).liked_users.values("first_name")
+
+#Display the user who uploaded the second book
+b=Books.objects.get(id=2)
+Users.objects.get(uploaded_books=b)

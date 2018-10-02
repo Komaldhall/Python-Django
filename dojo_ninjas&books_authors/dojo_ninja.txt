@@ -1,0 +1,48 @@
+
+#Dojo
+#Have it include the name of the dojo and the city and state of each dojo
+#Have the first dojo be "CodingDojo Silicon Valley" in "Mountain View", "CA".
+#Have the second dojo be "CodingDojo Seattle" in "Seattle", "WA".
+#Have the third dojo be "CodingDojo New York" in "New York", "NY".
+
+Dojos.objects.create(name="CodingDojo Silicon Valley", city="Mountain View", state="CA")
+Dojos.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+Dojos.objects.create(name="CodingDojo New York", city="New York", state="NY")
+
+#Ninja
+#Have it include first_name, last_name of each ninja in the 
+#Each dojo can have multiple ninjas and each ninja belongs to a specific do
+
+d=Dojos.objects.get(id=1)
+Ninjas.objects.create(first_name="aaa", last_name="bbb",dojo_id=d)
+Ninjas.objects.create(first_name="ccaaa", last_name="ccbbb",dojo_id=d)
+Ninjas.objects.create(first_name="cssccaaa", last_name="ssccbbb",dojo_id=d)
+d=Dojos.objects.get(id=2)
+Ninjas.objects.create(first_name="dsdsa", last_name="fdsdbbb",dojo_id=d)
+Ninjas.objects.create(first_name="dsddfgdfsa", last_name="fddsfsdbbb",dojo_id=d)
+Ninjas.objects.create(first_name="sdffxaefa", last_name="fdsdfaadbbb",dojo_id=d)
+d=Dojos.objects.get(id=3)
+Ninjas.objects.create(first_name="dsdsa", last_name="fdsdbbb",dojo_id=d)
+Ninjas.objects.create(first_name="derwsdsa", last_name="ferdsdbbb",dojo_id=d)
+Ninjas.objects.create(first_name="derwsdsa", last_name="ferdsdbbb",dojo_id=d)
+
+
+#Dojos.objects.first().ninjas.all()
+gives ninjas associated with first id, here id=1, results has 3 rows here
+
+
+#Ninjas.objects.first().dojo_id
+gives dojo information associated with first ninja, here it is the dojo_id linked to dojo table
+
+Ninjas.objects.first().dojo_id.name 
+will give 'CodingDojo Silicon Valley'
+
+#Dojos.objects.last().ninjas.all()
+gives ninjas associated with last id, here id=3, results has 3 rows here
+
+
+#Delete the three dojos you created
+d=Dojos.objects.all()
+d.delete()
+
+

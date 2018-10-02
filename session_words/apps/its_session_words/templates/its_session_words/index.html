@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Session Words</title>
+    <style>
+        .container{
+        width:100%;
+        background-color: beige;
+        
+        font-size:20px;
+        font-family: sans-serif;
+        padding:20px;
+        
+        }
+        .splitleft{
+        float:left; 
+        width: 45%;
+       
+        height: 600px;
+        }
+        .splitright {
+        float: right;
+       
+        height: 600px;
+        width: 45%;
+        overflow: scroll;
+        
+        }
+        .center{
+        float:left; 
+        width: 0.5%;
+        background-color:rgb(175, 124, 14);    
+        height: 600px;
+        }
+        .red{
+            color:red;
+        }
+        .green{
+            color:green;
+        }
+        .blue{
+            color:blue;
+        }
+        .high{
+            font-weight: bold;
+            
+            text-decoration: underline;
+        }
+        .head{
+            color:brown;
+        }
+            
+    
+    </style>
+</head>
+<body class="container">
+    <div class="splitleft">
+        <form action='/add_word' method='POST'>
+            {%csrf_token%}
+            <h2 class="head">Time to add new word!!</h2>
+            <input type="text" name="word" placeholder="Please add">
+            <h4 class="head">Pick a color</h4>
+            <!-- <input type="hidden" name="color" value="black"> -->
+            <label class="red"><input type="radio" name="color" value="red" checked> Red</label><br>
+            <label class="green"><input type="radio" name="color" value="green"> Green</label><br>
+            <label class="blue"><input type="radio" name="color" value="blue"> Blue</label><br>
+            <br>
+     
+            <input type="checkbox" name="font" value="1"> Display in <span class="high">BIG</span> fonts!<br>
+            <br>
+            <button name="button" class="blue">Add to Session</button>
+        </form>
+    </div> 
+    <div class="center"></div> 
+    <div class="splitright">
+        <form action='/clear' >
+            <button class="green">Clear Session</button><br><br>
+            {%for w in request.session.new_word%}
+
+                   <span class="{{w.color}}">{{w.word}}</span>
+                   - added on {{w.date}}
+
+                   <br>
+                   <br>
+            {%endfor %}        
+                
+         
+        </form>
+    </div>  
+</body>
+</html>

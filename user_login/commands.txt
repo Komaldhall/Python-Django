@@ -1,0 +1,24 @@
+#Know how to retrieve all users.
+Users.objects.all()
+
+#Know how to get the last user.
+Users.objects.last()
+
+#Create a few records in the users
+Users.objects.create(first_name="abc", last_name="def", email_address="dsfg.sdf@fw", age=40)
+
+#Know how to get the first user.
+Users.objects.first()
+
+#Know how to get the users sorted by their first name (order by first_name DESC)
+Users.objects.all().order_by('-first_name')
+
+#Get the record of the user whose id is 3 and UPDATE the person's last_name to something else. 
+#Know how to do this directly in the console using .get and .save.
+n=Users.objects.get(id=3)
+n.first_name="get"
+n.save()
+
+#Know how to delete a record of a user whose id is 4 (use something like User.objects.get(id=2).delete...).
+d=Users.objects.get(id=2)
+d.delete()

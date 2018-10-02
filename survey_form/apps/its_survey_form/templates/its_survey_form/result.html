@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        label{
+            display:inline-block;
+            /* width:140px; */
+        }
+        .margin_b{
+            margin-bottom: 15px;
+        }
+        .margin_r{
+            margin-right:4px;
+        }
+        .container{
+            text-align: center;
+            background-color: beige;
+            border:10px solid rgb(138, 138, 21);
+            font-size:20px;
+            font-family: sans-serif;
+        }   
+        
+            
+
+    </style>
+    
+</head>
+<body class="container">
+    <h1>Thanks for submitting this form!!</h1>
+    <p>You have submitted this form {{request.session.count}} times.</p>
+    <form action='/'>
+        
+        <label class="margin_b margin_r">Name:</label>{{request.session.name}}
+        <br>
+        <label class="margin_b">Dojo Location:</label> 
+        {{request.session.location}}
+        <br>
+        <label class="margin_b">Favorite Language:</label> 
+        {{request.session.language}}
+        <br>
+        <label class="margin_b">Comment:</label>
+        {{request.session.message}}
+        <br>
+        <br>
+        <input type='submit' value='Go Back' style='margin-left:238px;'>
+        <br><br>
+    </form>
+    
+</body>
+</html>
